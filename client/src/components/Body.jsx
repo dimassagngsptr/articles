@@ -19,21 +19,21 @@ const Body = ({ TABLE_HEAD, posts, getAllPost }) => {
   const [open, setOpen] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const navigate = useNavigate();
-  const [id, setId] = useState(null);
+  const postId = localStorage.getItem("id");
+
   const handleOpen = (item) => {
     formik.setErrors({});
-    setId(item?.ID);
+    localStorage.setItem("id", item.ID);
     formik.setValues({
       title: item?.title || "",
       content: item?.content || "",
       category: item?.category || "",
-      status: item?.status || "",
     });
     setOpen(!open);
   };
   const handleOpenDelete = (item) => {
     formik.setErrors({});
-    setId(item?.ID);
+    localStorage.setItem("id", item.ID);
     formik.setValues({
       title: item?.title || "",
       content: item?.content || "",
@@ -45,7 +45,7 @@ const Body = ({ TABLE_HEAD, posts, getAllPost }) => {
   const handleFormSubmit = (status) => {
     formik.setFieldValue("status", status);
     formik.handleSubmit();
-    handleOpen();
+    setOpen(!open);
   };
   const handleDelete = () => {
     formik.handleSubmit();
@@ -62,7 +62,7 @@ const Body = ({ TABLE_HEAD, posts, getAllPost }) => {
     validationSchema: addArticleSchema,
     onSubmit: async (values, { setSubmitting }) => {
       try {
-        await api.put(`/${id}`, values);
+        await api.put(`/${postId}`, values);
         getAllPost();
       } catch (error) {
         console.log(error);
@@ -100,9 +100,11 @@ const Body = ({ TABLE_HEAD, posts, getAllPost }) => {
               <tr
                 key={item?.title}
                 className="hover:bg-gray-200 cursor-pointer"
-                onClick={() => navigate(`/detail/${item?.ID}`)}
               >
-                <td className={classes}>
+                <td
+                  className={classes}
+                  onClick={() => navigate(`/detail/${item?.ID}`)}
+                >
                   <Tooltip content={item?.title}>
                     <p className="truncate max-w-[250px]">{item?.title}</p>
                   </Tooltip>
