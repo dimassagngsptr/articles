@@ -13,7 +13,8 @@
 
 - [Table of Contents](#table-of-contents)
 - [Getting Started](#getting-started)
-  - [Installation](#installation) -[Documentation](#documentation)
+  - [Installation](#installation)
+  - [Documentation](#documentation)
 
 ### Built With
 
