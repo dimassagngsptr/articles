@@ -80,6 +80,11 @@ http://localhost:5173/
 Setup Backend
 
 ```sh
+cd api
+```
+
+
+```sh
 go mod tidy
 ```
 
