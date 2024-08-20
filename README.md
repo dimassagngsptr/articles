@@ -41,6 +41,7 @@ git clone https://github.com/dimassagngsptr/articles.git
 
 2. Go to folder Todo App
 
+
 Run this command to open the folder
 
 ```sh
@@ -55,15 +56,53 @@ code .
 
 3. Install all of the required modules
 
+Setup Frontend
+
+```sh
+cd client
+```
+
 ```sh
 npm install
 ```
 
-4. Run this command to run the project
-
 ```sh
 npm run dev
 ```
+
+After that, you can run browser with this url: 
+
+```sh
+http://localhost:5173/
+```
+
+Setup Backend
+
+```sh
+go mod tidy
+```
+
+```sh
+go run main.go
+```
+
+```sh
+air
+```
+
+After that, you can run api with this url: 
+
+```sh
+http://localhost:3000/
+```
+
+or
+
+
+```sh
+http://localhost:3000/article
+```
+
 
 ### Documentation
 
